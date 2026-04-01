@@ -1,0 +1,218 @@
+:root {
+  font-family: "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+  color: #f4efe6;
+  background:
+    radial-gradient(circle at top, rgba(255, 204, 128, 0.28), transparent 36%),
+    linear-gradient(160deg, #11243b 0%, #1f3a5f 45%, #0c1624 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.game-panel {
+  width: min(100%, 920px);
+  position: relative;
+  padding: 28px;
+  border-radius: 32px;
+  background: rgba(7, 16, 28, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.status-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.status-bar > div {
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.status-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: #c8d7ea;
+}
+
+.status-bar strong {
+  font-size: 1.35rem;
+}
+
+.time-alert {
+  color: #ffca70;
+}
+
+.board {
+  display: grid;
+  gap: 16px;
+  perspective: 1200px;
+}
+
+.board-6 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.board-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.board-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  background: transparent;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card:disabled {
+  cursor: default;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+  transform: rotateY(180deg);
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  background: linear-gradient(180deg, #fff6dc 0%, #ffdca6 100%);
+  color: #17304f;
+}
+
+.card-back {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: #fff5d6;
+  background:
+    linear-gradient(
+      140deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.05)
+    ),
+    linear-gradient(180deg, #3f6ba3 0%, #26466f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.progress-note {
+  margin-top: 20px;
+  text-align: center;
+  color: #c8d7ea;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 7, 14, 0.6);
+  border-radius: 32px;
+}
+
+.overlay-card {
+  width: min(100%, 440px);
+  padding: 30px;
+  text-align: center;
+  border-radius: 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 26, 44, 0.96),
+    rgba(15, 41, 68, 0.9)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.overlay-kicker {
+  margin: 0 0 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffca70;
+  font-size: 0.78rem;
+}
+
+.overlay-card h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.overlay-card p {
+  margin: 0;
+  color: #dce7f4;
+  line-height: 1.6;
+}
+
+.primary-button {
+  margin-top: 22px;
+  border: 0;
+  padding: 12px 24px;
+  border-radius: 999px;
+  color: #17304f;
+  background: linear-gradient(180deg, #ffd27e 0%, #ffb547 100%);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button:hover {
+  filter: brightness(1.04);
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .game-panel {
+    padding: 18px;
+  }
+
+  .status-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .board-6,
+  .board-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
